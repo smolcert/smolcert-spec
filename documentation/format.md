@@ -18,10 +18,18 @@ considerations)[http://unicode.org/reports/tr36/] of the unicode consortium.
 It may happen that a field is absent. For example during creation of the signature, the signature field
 itself needs to be absent. In this case the field is filled with a value of major type 7 and simple value
 22. This value (0xF6), signals a simple `NULL` value in cbor. It is currently only valid to set the fields
-`signature` and `extensions` to this value. Although it for a valid certificate it doesn't make sense
+`signature` and `extensions` to this value. Although for a valid certificate it doesn't make sense
 to set `extensions` to `NULL`, as this certificate then would not have any usage.
 
 ## Fields
+
+### version
+
+This field signals the version of smolcert used for this certificate. smolcert sees choices
+of its cryptographic algorithms like asymetric cryptography, signature algorithms etc. as part
+of its version and not negotiable via protocol or format descriptions. The goal is to have sensible,
+secure choices of these algorithms at specification time. When the need arises in the future to choose
+different algorithms, this requires a new version of the smolcert specification.
 
 ### serial_number
 
